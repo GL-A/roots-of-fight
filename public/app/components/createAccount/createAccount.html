@@ -1,0 +1,19 @@
+
+<div class="create-account-container">
+  <h1>Create Account</h1>
+  <form ng-submit="createUser(user)">
+    <h4>First name</h4>
+    <input ng-model="user.firstname" required/>
+
+    <h4>Last name</h4>
+    <input ng-model="user.lastname"  required/>
+
+    <h4>Email Address</h4>
+    <input ng-model="user.emailaddress"  required/>
+
+    <h4>Password</h4>
+    <input  pattern=".{6,}" type="password" ng-model="user.password" required/>
+    <button type="submit">Create</button>
+
+  </form>
+</div>
