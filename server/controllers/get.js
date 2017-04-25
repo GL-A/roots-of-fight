@@ -2,7 +2,8 @@ const app = require('./../server')
   ,db = app.get('db')
   ,jwt = require('jsonwebtoken')
   ,bcrypt = require('bcryptjs')
-  ,_ = require('lodash');
+  ,_ = require('lodash')
+  ,config = require('./../config.js');
 
 module.exports = {
   getProducts: function(req, res, next){
@@ -14,7 +15,39 @@ module.exports = {
         res.send(results);
       }
     })
+  },
+  getUserProducts: function(req, res, next) {
+    var token = req.headers.token;
+    var decoded;
+    var userId;
+
+    try {
+      decoded = jwt.verify(token, config.secret);
+    } catch(error) {
+      return Promise.reject(error);
+    }
+    userId = decoded.id;
+    db.get.get_cart_products([userId], function(err, results) {
+      if(err){
+        res.send(err);
+      } else {
+        res.send(results);
+
+      }
+    })
   }
+  // cartLength: function(req, res, next){
+  //   console.log(req.headers);
+  //   var token = req.headers.token;
+  //   var userId;
+  //   // db.get_cart_products([userId], function(err, getRes){
+  //   //   if(err){
+  //   //     res.send(err);
+  //   //   } else {
+  //   //
+  //   //   }
+  //   // })
+  // }
   // createUser: function(req, res, next){
   //   console.log(req.body);
   //   var secret = "34";

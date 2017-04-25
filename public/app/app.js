@@ -40,5 +40,15 @@ angular.module('app', ['ui.router', 'ngAnimate'])
         templateUrl: './app/components/cart/cart.html',
         controller: 'CartController'
       })
+    .state('address', {
+      url: '/checkout/information',
+      templateUrl: './app/components/address/address.html',
+      controller: 'addressCtrl'
+    })
+    .state('payment', {
+      url: '/checkout/payment',
+      templateUrl: './app/components/payment/payment.html',
+      controller: 'paymentCtrl'
+    })
 
   });

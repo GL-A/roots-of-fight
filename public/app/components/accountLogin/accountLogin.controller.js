@@ -1,10 +1,10 @@
 angular.module('app')
-  .controller('LoginController', function($scope, userSvc){
+  .controller('LoginController', function($scope, userSvc, $state){
     $scope.test = 'test';
 
     $scope.login = function(user) {
       userSvc.login(user).then(function(res) {
-        console.log(res);
+        $state.go('home');
       })
     }
 

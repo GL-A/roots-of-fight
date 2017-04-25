@@ -1,13 +1,31 @@
-<div style="background-color: green; color: white;">
+<nav-dir></nav-dir>
+<div class="account-login">
+
+
+  <div>
+    <h2>Login</h2>
+    <p>
+      <span>Home</span> / Account
+    </p>
+  </div>
+
   <form ng-submit="login(user)">
     <p>
-      email
+      Email Address
     </p>
     <input ng-model="user.email" />
     <p>
-      password
+      Password
     </p>
     <input ng-model="user.password"/>
-    <button type="submit">log in</button>
+    <div>
+      <button type="submit">log in</button>
+      or
+      <p ui-sref="createAccount">
+        Register a New Account
+      </p>
+    </div>
+
   </form>
 </div>
+<footer-dir></footer-dir>

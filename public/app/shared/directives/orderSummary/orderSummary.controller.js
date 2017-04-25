@@ -1,6 +1,5 @@
 angular.module('app')
- .controller('CartController', function($scope, productsSvc, cartSvc, $state){
-
+  .controller('orderController', function($scope, productsSvc){
     $scope.getUserProducts = function() {
       productsSvc.getUserProducts().then(function(res) {
         var products = res;
@@ -10,7 +9,6 @@ angular.module('app')
         }
         productsSvc.getProducts(idArr).then(function(res) {
           var cartProducts = res.cartProducts;
-
           products.forEach(item1 => {
             cartProducts.forEach(item2 => {
               if(item1.product_id == item2.id){
@@ -27,29 +25,10 @@ angular.module('app')
           $scope.total = products.map(function(item){
             $scope.totalPrice += item.price;
           })
-          // console.log($scope.totalPrice);
+
           $scope.products = products;
         })
       })
     }
     $scope.getUserProducts();
-    $scope.updateQty = function(qty, orderId){
-      cartSvc.updateCartQty(qty, orderId).then(function(res){
-      })
-    }
-
-    $scope.Delete = function(orderId){
-      cartSvc.deleteOrder(orderId).then(function(res){
-        $state.reload();
-      })
-    }
-    $scope.updatedCart = function(){
-      $state.reload();
-    }
-
-    $scope.checkOut = function(p){
-      // console.log(p);
-    }
-
-
- })
+  })

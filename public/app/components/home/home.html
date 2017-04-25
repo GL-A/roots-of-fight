@@ -1,4 +1,4 @@
-
+<nav-dir></nav-dir>
 <div home-dir class="img-slider-container">
 
   <ul class="img-div" >
@@ -47,9 +47,10 @@
 
 <div class="collections-ad-container" >
   <ul>
-    <li ng-repeat="img in collectionImgs">
+    <li ui-sref="productDetails({id: collectionName, name: product.name})" ng-repeat="img in collectionImgs">
       <img src={{img}} />
     </li>
   </ul>
 
 </div>
+<footer-dir></footer-dir>

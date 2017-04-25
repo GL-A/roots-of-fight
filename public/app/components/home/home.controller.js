@@ -5,9 +5,13 @@ angular.module('app')
       "./assets/images/main/home-slider-slide-5.jpg"
     ];
 
-    productsSvc.getProducts().then(function(res){
-      $scope.newReleases = res.newReleases;
-    });
+    // productsSvc.getProducts().then(function(res){
+    //   $scope.newReleases = res.newReleases;
+    // });
+    productsSvc.getNew().then(function(res){
+      // console.log(res);
+        $scope.newReleases = res;
+    })
 
     $scope.collectionImgs = [
       "./assets/images/main/collections_ad/home-widget-image-text-1 (1).jpg",

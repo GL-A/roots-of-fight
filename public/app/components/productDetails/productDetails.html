@@ -1,3 +1,4 @@
+<nav-dir></nav-dir>
 <div class="details-main-container">
   <div class="details-nav">
     <a ui-sref="home">Home</a> &nbsp; / &nbsp; Collections &nbsp; / &nbsp; <span>{{productCollection}}</span> &nbsp; / &nbsp; {{productName}}
@@ -14,18 +15,17 @@
             Size
           </p>
 
-          <select >
-            <option ng-repeat="size in sizeUl" > {{size}}</option>
+          <select ng-model="pSize" ng-init="pSize = sizeUl[0]" ng-options="size.size for size in sizeUl"  >
           </select>
         </div>
 
         <div class="details-product-order-add-cart">
           <div class="details-product-order-qty">
             <label>Quantity</label>
-            <input type="number" min="1" value="1" />
+            <input ng-model="qty" ng-init="qty = 1" type="number" min="1" value="1" />
           </div>
-
-          <button>ADD TO CART</button>
+          <!-- <button ng-click="testu(pSize)"></button> -->
+          <button ng-click="addToCart(product[0].id, pSize, qty)">ADD TO CART</button>
         </div>
 
         <div class="details-product-order-larg-img">
@@ -91,3 +91,4 @@
   </div>
 
 </div>
+<footer-dir></footer-dir>
