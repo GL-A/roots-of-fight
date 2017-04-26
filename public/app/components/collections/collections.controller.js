@@ -3,7 +3,6 @@ angular.module('app')
     $scope.collectionName = $stateParams.id;
     productsSvc.getProducts($stateParams.id).then(function(res){
       $scope.collectionProducts = res.byName;
-      console.log($scope.collectionProducts);
     });
 
   })

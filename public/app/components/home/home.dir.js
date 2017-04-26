@@ -3,14 +3,14 @@ angular.module('app')
     return {
       restrict: 'A',
       link: function(scope, elem, attr){
-
+        
         function checkWidth() {
           var windowsize = $(window).width();
           var transX = 0;
           var checker = 0;
           if(windowsize > 768) {
             $('.home-product-slider-li').css('transform', 'translateX(0%)');
-            
+
             $('.img-i-1').on('click', function() {
               $('.img-div-li').css('transform', 'translateX(-100%)');
             })

@@ -1,6 +1,7 @@
 angular.module('app')
   .service('userSvc', function($http){
 
+
     this.createUser = function(user){
       return $http({
         method: 'POST',
@@ -12,6 +13,7 @@ angular.module('app')
           password: user.password
         }
       }).then(function(res){
+        console.log("create user", res);
         var token = res.headers()['x-auth'];
         var tokenObj = {'token': token}
         localStorage.setItem('tokenObj', JSON.stringify(tokenObj));
@@ -27,10 +29,13 @@ angular.module('app')
           password: user.password
         }
       }).then(function(res) {
-        var token = res.headers()['x-auth'];
-        var tokenObj = {'token': token}
-        localStorage.setItem('tokenObj', JSON.stringify(tokenObj));
-        return res;
+        if(res.data === true){
+          var token = res.headers()['x-auth'];
+          var tokenObj = {'token': token}
+          localStorage.setItem('tokenObj', JSON.stringify(tokenObj));
+        }
+
+        return res.data;
       })
 
     }

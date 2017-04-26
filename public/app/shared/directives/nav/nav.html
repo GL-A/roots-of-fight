@@ -1,42 +1,56 @@
-<nav>
+<nav >
   <div class="logo-nav-container">
     <div class="main-filler">
     </div>
 
     <div ui-sref="home" class="main-logo">
     </div>
-    <div ng-switch on="display.div" class="main-account">
+    <div  class="main-account">
       <!-- search div -->
-      <div ng-switch-when="1" >
-        <div ng-click="display.div=2" class="main-account-search">
+      <div class="main-account-nav" >
+        <div class="main-account-search">
           <p >
             Search
           </p>
           <i  class="fa fa-search fa-lg" aria-hidden="true"></i>
         </div>
         <!-- account div -->
-        <div ng-click="display.div=3; test()"  class="main-account-account">
-          <p>
+        <div  class="main-account-account">
+          <p >
             Account
           </p>
           <i class="fa fa-user fa-lg" aria-hidden="true"></i>
         </div>
       </div>
       <!-- search -->
-      <div ng-switch-when="2" class="main-account-search-input">
+
+      <div style="display: none;" class="main-account-search-input">
         <input  />
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-        <i ng-click="display.div=1" class="fa fa-times search-x" aria-hidden="true"></i>
+        <i id="nav-search-x" class="fa fa-times search-x" aria-hidden="true"></i>
       </div>
+
       <!-- log in -->
-      <div ng-switch-when="3" class="main-account-login">
-        <p>
+
+      <div id="login-signup" style="display: none"  class="main-account-login">
+
+        <p >
           <a ui-sref="accountLogin">Log In</a>
           or
           <a ui-sref="createAccount">Sign Up</a>
         </p>
-        <i ng-click="display.div=1" class="fa fa-times account-x" aria-hidden="true"></i>
+        <i id="nav-account-x" class="fa fa-times account-x" aria-hidden="true"></i>
       </div>
+      <div id="view-account-logout" style="display: none"  class="main-account-login">
+
+        <p>
+          <a ui-sref="account">View Account(Logged in as )</a>
+          ||
+          <a ui-sref="account">Logout</a>
+        </p>
+        <i id="nav-account-xx" class="fa fa-times account-x" aria-hidden="true"></i>
+      </div>
+      <!-- ======================= -->
 
     </div>
   </div>
@@ -104,6 +118,7 @@
           <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
         </li>
       </ul>
+
     </div>
     <div class="nav-collections-filler" ui-sref="cart">
       <div class="nav-collections-filler-cart">
@@ -123,5 +138,44 @@
     <p ng-click="shopCollection({l})" ui-sref="shopCollection({id: l.toLowerCase()})" ng-repeat="l in menuList">
       {{l}}
     </p>
+  </div>
+  <div id="mobile-collection-dropdown" class="mobile-collection-div">
+    <ul class="mobile-collection-ul">
+      <li class="mobile-collection-li" ng-click="getList('SHOP')" class="web-li">
+        SHOP
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('BOXING')"class="web-li">
+        BOXING
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('MARTIAL ARTS')" class="web-li">
+        MARTIAL ARTS
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('BASEBALL')" class="web-li">
+        BASEBALL
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('BASKETBALL')" class="web-li">
+        BASKETBALL
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('FOOTBALL')" class="web-li">
+        FOOTBALL
+      </li>
+
+      <li class="mobile-collection-li" ng-click="getList('COLLECTIONS')" class="web-li">
+        COLLECTIONS
+      </li>
+
+
+    </ul>
+    <div class="mobile-li-dropdown" >
+      <p ng-click="shopCollection({l})" ui-sref="shopCollection({id: l.toLowerCase()})" ng-repeat="l in menuList">
+        {{l}}
+      </p>
+    </div>
+
   </div>
 </nav>

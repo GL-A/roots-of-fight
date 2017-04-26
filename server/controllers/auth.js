@@ -44,9 +44,14 @@ module.exports = {
                 res.send(err);
               } else {
                 var token = jwt.sign({id: results[0].id.toString()}, config.secret).toString();
-              
+
                 db.post.create_user_email([results[0].id, email], function(err, respo){
-                  return res.header('x-auth', token).send(respo);
+                  if(err){
+                    res.send(err);
+                  } else{
+                    return res.header('x-auth', token).send(respo);
+                  }
+
                 })
               }
             })
@@ -57,51 +62,24 @@ module.exports = {
   },
   getUser: function(req, res, next) {
     db.get.get_user([req.body.email], function(err, results) {
+      // console.log(results);
       if(err){
-        console.log(err);
+        res.send(err);
       }
-      else {
+      if(results.length > 0){
         bcrypt.compare(req.body.password, results[0].password, (err, result) => {
-          if(result){
+          if(err){
+            res.send(err);
+          }
+            else {
             var token = jwt.sign({id: results[0].id.toString()}, config.secret).toString();
             return res.header('x-auth', token).send(result);
           }
-          else {
-            return res.send(false);
-          }
         })
       }
+      else{
+        res.send(false);
+      }
     })
-      // var password = req.body.password;
-
-
-      // bcrypt.compare(password, hashpassword, (err, res) => {
-      //   console.log(res)
-      // })
-
-
-      // var token = jwt.sign(req.body.id, '34');
-      // console.log('token', token);
-
-      // var decoded = jwt.verify(token, '34');
-      // console.log('decoded', decoded);
-      // console.log('hello');
-
-
-    // $2a$10$eK1WVRy38GxTzDhjQru/AuoQHBsNbopkSJGdTDz.JTcd8xYV4Jwu.
-    // var token = req.headers['x-auth'];
-    // var decoded;
-    // try {
-    //   decoded = jwt.verify(token, config.secret);
-    // } catch(e) {
-    //   return Promise.reject();
-    // }
-    // db.get.user([decoded.id], function(err, results) {
-    //   if(err){
-    //     res.send(err);
-    //   } else {
-    //     res.send(results);
-    //   }
-    // })
   }
 };

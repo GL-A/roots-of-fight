@@ -1,20 +1,6 @@
 angular.module('app')
   .controller('navCtrl', function($scope, $state, productsSvc) {
 
-    // var token = JSON.parse(localStorage.getItem('tokenObj')).token;
-    // $scope.test = function(){
-    //
-    // }
-    // productsSvc.cartLength().then(function(res) {
-    //   console.log(res);
-    // })
-    $scope.test = function(){
-      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
-      if(token){
-        $state.go('account');
-      }
-    }
-
     $scope.display = {
       div: 1
     };
