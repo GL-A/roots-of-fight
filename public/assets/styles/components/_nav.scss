@@ -153,9 +153,6 @@ nav{
             transition: all ease-in-out 0.4s;
           }
         }
-        #cartlogo-mobile-login{
-          display: none !important;
-        }
         .responsive-li{
           cursor: pointer;
           display: none;
@@ -179,7 +176,7 @@ nav{
           }
 
           .responsive-li{
-            display: flex !important;
+            display: flex;
             margin: 0;
             padding: 20px 0;
             #nav-collections-ham-container{

@@ -12,17 +12,6 @@ angular.module('app').directive('navDir', function(){
       }
       var listChecker;
 
-      if(token === false){
-        $(".nav-collections-filler").css("display", "none");
-        $("#cartlogo-mobile").css("display", "none");
-        $("#cartlogo-mobile-login").css("display", "flex");
-      }
-      if(token === true){
-        $(".nav-collections-filler").css("display", "none");
-        $("#cartlogo-mobile").css("display", "flex");
-        $("#cartlogo-mobile-login").css("display", "none");
-      }
-
       $('.main-account-account').on('click', function(){
         if(token === false){
           // $(this).css("display", "none");
