@@ -153,10 +153,14 @@ nav{
             transition: all ease-in-out 0.4s;
           }
         }
+        #cartlogo-mobile-login{
+          display: none !important;
+        }
         .responsive-li{
           cursor: pointer;
           display: none;
         }
+
       }
       .mobile-collection-li{
 
@@ -173,8 +177,9 @@ nav{
           .web-li{
             display: none;
           }
+
           .responsive-li{
-            display: flex;
+            display: flex !important;
             margin: 0;
             padding: 20px 0;
             #nav-collections-ham-container{
@@ -227,6 +232,11 @@ nav{
   }
   .mobile-collection-div{
     height: 0;
+    overflow: hidden;
+  }
+  #mobile-collection-dropdown{
+    display: none;
+    overflow: hidden;
   }
   @media(max-width: 768px){
     .web-li-dropdown{
@@ -234,7 +244,6 @@ nav{
     }
 
     .mobile-collection-div{
-      // background: green;
       display: flex;
       div, ul{
         width: calc(100%/2);
@@ -244,8 +253,6 @@ nav{
         list-style: none;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         .mobile-collection-li{
           padding: 20px 0;
         }

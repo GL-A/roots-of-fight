@@ -54,10 +54,24 @@ angular.module('app')
         "MMA LEGENDS"
       ]
     };
-
+    $scope.goToAccount = function(){
+      if(localStorage.length >= 1){
+        $state.go("account");
+      } else{
+        $state.go("accountLogin");
+      }
+    }
     $scope.getList = function(param){
       $scope.menuList = listObj[param];
     }
     $scope.getList();
+    var token;
+    if(localStorage.length >= 1){
+      productsSvc.cartLength().then(function(res){
+        $scope.cartLength = res;
+      })
+    } else{
+      $scope.cartLength = 0;
+    }
 
   })

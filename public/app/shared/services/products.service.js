@@ -10,8 +10,8 @@ angular.module('app')
           "token": token
         }
       }).then(function(res){
-        console.log(res);
-        return res;
+        var amount = res.data.length;
+        return amount;
       })
     }
 

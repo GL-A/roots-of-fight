@@ -9,7 +9,6 @@ module.exports = {
   getProducts: function(req, res, next){
     db.get.get_products([], function(err, results) {
       if(err){
-        console.log(err);
         res.send(err);
       } else {
         res.send(results);
@@ -33,6 +32,46 @@ module.exports = {
       } else {
         res.send(results);
 
+      }
+    })
+  },
+  getEmail: function(req, res, next){
+    var token = req.headers.token;
+    var decoded;
+    var userId;
+
+    try {
+      decoded = jwt.verify(token, config.secret);
+    } catch(error) {
+      return Promise.reject(error);
+    }
+    userId = decoded.id;
+
+
+    db.get.email([userId], function(err, emailResult){
+      if(err){
+        res.send(err);
+      } else {
+        res.send(emailResult);
+      }
+    })
+  },
+  cartLength: function(req, res, next) {
+    var token = req.headers.token;
+    var decoded;
+    var userId;
+
+    try {
+      decoded = jwt.verify(token, config.secret);
+    } catch(error) {
+      return Promise.reject(error);
+    }
+    userId = decoded.id;
+    db.get.get_cart_products([userId], function(err, getRes){
+      if(err){
+        res.send(err);
+      } else {
+        res.send(getRes);
       }
     })
   }

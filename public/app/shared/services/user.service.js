@@ -37,6 +37,28 @@ angular.module('app')
 
         return res.data;
       })
+    }
+
+    this.getEmail = function(){
+      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
+      return $http({
+        method: "GET",
+        url: "/api/users/email",
+        headers: {
+          "token": token
+        }
+      }).then(function(res){
+        // var user = {
+        //   email: res.data[0].email,
+        //   firstname: res.data[0].firstname,
+        //   lastname: res.data[0].lastname,
+        //   address: res.data[0].street + ' ' +  res.data[0].city + ' ' + res.data[0].state + ' ' +  res.data[0].zipcode + ' ' +  res.data[0].country,
+        //   phone: res.data[0].phone
+        // }
+        // return user;
+        return res.data[0].email;
+
+      })
 
     }
 

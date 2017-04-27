@@ -101,7 +101,7 @@
         </li>
         <li class="responsive-li">
           <div id="nav-collections-ham-container">
-            <div ng-click="toggle = !toggle" ng-class="{'anime' : toggle}"  id="nav-collections-ham-burger">
+            <div  id="nav-collections-ham-burger">
               <span>&nbsp;</span>
               <span>&nbsp;</span>
               <span>&nbsp;</span>
@@ -111,22 +111,27 @@
         <li class="responsive-li">
           <i class="fa fa-search fa-lg" aria-hidden="true"></i>
         </li>
-        <li class="responsive-li">
+        <li  ng-click="goToAccount()"class="responsive-li">
           <i class="fa fa-user fa-lg" aria-hidden="true"></i>
         </li>
-        <li class="responsive-li">
+        <li id="cartlogo-mobile" ui-sref="cart" class="responsive-li">
           <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
         </li>
+        <li id="cartlogo-mobile-login" ui-sref="accountLogin" class="responsive-li">
+          <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+        </li>
+
       </ul>
 
     </div>
     <div class="nav-collections-filler" ui-sref="cart">
       <div class="nav-collections-filler-cart">
         <p>
-          Cart
+          Cart _
         </p>
+
         <p>
-          {{}}
+          ({{cartLength}})
         </p>
         <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
 

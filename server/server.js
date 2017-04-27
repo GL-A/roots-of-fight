@@ -34,6 +34,7 @@ var deleteCtrl = require('./controllers/delete.js');
 
 app.get('/api/products', getCtrl.getProducts);
 app.get('/api/userProducts', getCtrl.getUserProducts);
+app.get('/api/cart', getCtrl.cartLength);
 // app.get('/api/cart', getCtrl.cartLength);
 
 //auth
@@ -47,8 +48,8 @@ app.post('/api/address', postCtrl.postAddress);
 app.put('/api/orders', putCtrl.updateCartQty);
 //delete
 app.delete('/api/orders/:id', deleteCtrl.deleteOrder);
-//payment
-
+//get
+app.get('/api/users/email', getCtrl.getEmail);
 
 
 let port = config.port;
