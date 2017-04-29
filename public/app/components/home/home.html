@@ -27,7 +27,7 @@
 
     <div class="home-product-slider-ul-container">
       <ul class="home-product-slider-ul">
-        <li class="home-product-slider-li" ng-repeat="new in newReleases">
+        <li ui-sref="productDetails({id: new.collections, name: new.name})" class="home-product-slider-li" ng-repeat="new in newReleases">
           <img class="home-product-slider-li-img" src="{{new.jsonb_agg[0]}}" />
           <div class="home-product-slider-li-div">
             <h4>{{new.name}}</h4>
@@ -47,8 +47,8 @@
 
 <div class="collections-ad-container" >
   <ul>
-    <li ui-sref="productDetails({id: collectionName, name: product.name})" ng-repeat="img in collectionImgs">
-      <img src={{img}} />
+    <li ui-sref="shopCollection({id: img.name})" ng-repeat="img in collectionImgs">
+      <img src={{img.imgUrl}} />
     </li>
   </ul>
 

@@ -42,6 +42,16 @@ const app = require('./../server')
             if(err) {
               res.send(err);
             }
+            else if(updateOrderRes.length === 0){
+              db.post.products_to_order([userId, productId, size, qty], function(err, newPostRes) {
+                if(err){
+                  res.send(err);
+                }
+                else {
+                  res.send(newPostRes);
+                }
+              })
+            }
             else {
               db.get.match_size([userId, productId, size], function(err, matchSizeRes) {
                 if(err){
