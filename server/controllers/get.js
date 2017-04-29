@@ -74,7 +74,29 @@ module.exports = {
         res.send(getRes);
       }
     })
+  },
+  getAddress: function(req, res, next){
+    var token = req.headers.token;
+    var decoded;
+    var userId;
+
+    try {
+      decoded = jwt.verify(token, config.secret);
+    } catch ( error ) {
+      return Promise.reject( error );
+    }
+
+    userId = decoded.id;
+    console.log(userId);
+    db.get.address([userId], function(err , addressRes){
+      if(err) {
+        res.send(err);
+      } else {
+        res.send(addressRes);
+      }
+    })
   }
+
   // cartLength: function(req, res, next){
   //   console.log(req.headers);
   //   var token = req.headers.token;

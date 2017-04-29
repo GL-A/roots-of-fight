@@ -10,7 +10,13 @@ angular.module('app')
           "token": token
         }
       }).then(function(res){
-        var amount = res.data.length;
+        var products = res.data;
+        products = products.filter(function(product){
+          if(product.completed_date === null){
+            return product;
+          }
+        })
+        var amount = products.length;
         return amount;
       })
     }
@@ -23,7 +29,6 @@ angular.module('app')
         var productObj = res.data;
         var newReleases = productObj.filter(function(obj){
           return obj.collections.includes('new')? obj.collections: null;
-          console.log(obj);
         })
         var byName = productObj.filter(function(obj){
           return obj.collections.includes(param)? obj.collections: obj.type.includes(param)? obj.type: null;
@@ -60,7 +65,6 @@ angular.module('app')
 
         var newReleases = productObj.filter(function(obj){
           return obj.collections.includes('new')? obj.collections: null;
-          console.log(obj);
         })
 
         return newReleases;
@@ -89,7 +93,23 @@ angular.module('app')
           "token": token
         }
       }).then(function(res) {
-        return res.data;
+        var order = res.data;
+        order = order.filter(function(product){
+          if(product.completed_date === null){
+            return product;
+          }
+        })
+        return order;
+      })
+    }
+    this.completeOrder = function(credit) {
+      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
+      return $http({
+        method: "POST",
+        url: "/api/completeOrder",
+        headers: {
+          "token": token
+        }
       })
     }
 

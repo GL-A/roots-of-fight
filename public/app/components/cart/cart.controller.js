@@ -22,12 +22,10 @@ angular.module('app')
               }
             })
           })
-          // console.log(products);
           $scope.totalPrice = 0;
           $scope.total = products.map(function(item){
             $scope.totalPrice += item.price;
           })
-          // console.log($scope.totalPrice);
           $scope.products = products;
         })
       })

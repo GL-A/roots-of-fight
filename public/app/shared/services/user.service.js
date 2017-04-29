@@ -59,7 +59,18 @@ angular.module('app')
         return res.data[0].email;
 
       })
-
+    }
+    this.getAdderess = function(){
+      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
+      return $http({
+        method: "GET",
+        url: "/api/users/address",
+        headers: {
+          "token": token
+        }
+      }).then(function(res){
+        return res.data[0];
+      })
     }
 
 

@@ -24,11 +24,16 @@
       </div>
       <!-- search -->
 
-      <div style="display: none;" class="main-account-search-input">
-        <input  />
+      <form ng-submit="goToSearch(searchCollection)">
+<!-- ui-sref="search({search: searchCollection})" -->
+      <div  style="display: none;" class="main-account-search-input">
+        <input ng-model="searchCollection" placeholder="Search store..."  />
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
         <i id="nav-search-x" class="fa fa-times search-x" aria-hidden="true"></i>
       </div>
+    </form>
+
+
 
       <!-- log in -->
 
@@ -114,7 +119,7 @@
         <li id="accountlogo-mobile" ng-click="goToAccount()"class="responsive-li">
           <i class="fa fa-user fa-lg" aria-hidden="true"></i>
         </li>
-        <li ng-click="goToAccount()" id="cartlogo-mobile" ui-sref="cart" class="responsive-li">
+        <li ng-click="goToCart()" id="cartlogo-mobile"  class="responsive-li">
           <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
         </li>
 
@@ -122,14 +127,14 @@
       </ul>
 
     </div>
-    <div class="nav-collections-filler" ui-sref="cart">
+    <div ng-click="goToCart()" class="nav-collections-filler" >
       <div class="nav-collections-filler-cart">
         <p>
-          Cart _
+          Cart &nbsp;
         </p>
 
         <p>
-          ({{cartLength}})
+          {{cartLength}}
         </p>
         <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
 

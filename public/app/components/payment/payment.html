@@ -1,5 +1,5 @@
 
-<div class="payment-main-logo">
+<div ui-sref="home" class="payment-main-logo">
   <img src="./assets/images/main/checkout_logo_image.png"/>
 </div>
 <order-dir></order-dir>
@@ -11,7 +11,8 @@
         Shipping Address
       </p>
       <p>
-        2925 se 131st ave, Portland, United States
+        <!-- 2925 se 131st ave, Portland, United States -->
+        {{address}}
       </p>
     </div>
     <div class="payment-address-shipping">
@@ -30,6 +31,7 @@
       All transactions are secure and encrypted.
     </p>
   </div>
+<form ng-submit="postOrder(credit)">
 
   <div class="payment-credit-info">
     <div class="payment-credit-header">
@@ -46,11 +48,12 @@
         <i class="fa fa-paypal fa-2x" aria-hidden="true"></i>
       </div>
     </div>
+
     <div class="payment-credit-number">
-      <input placeholder="Card number" />
-      <input placeholder="Name on card" />
-      <input placeholder="MM/YY" />
-      <input placeholder="CVV" />
+      <input type="number"  ng-model="credit.cardNum" placeholder="Card number" required />
+      <input ng-model="credit.name" placeholder="Name on card" required/>
+      <input  ng-model="credit.mm"  placeholder="MM/YY" required/>
+      <input type="number" ng-model="credit.cvv" placeholder="CVV" required/>
     </div>
   </div>
 
@@ -80,9 +83,11 @@
       </p>
     </div>
     <div>
-      <button>Complete Order</button>
+      <button type="submit">Complete Order</button>
     </div>
   </div>
+
+  </form>
 
 <div class="payment-footer">
   <p>

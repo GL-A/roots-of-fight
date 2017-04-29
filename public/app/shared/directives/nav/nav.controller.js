@@ -1,6 +1,9 @@
 angular.module('app')
   .controller('navCtrl', function($scope, $state, productsSvc) {
-
+    $scope.searchCollection = "";
+    $scope.goToSearch = function(searchCollection){
+      $state.go("search", {"search":searchCollection});
+    }
     $scope.display = {
       div: 1
     };
@@ -20,7 +23,7 @@ angular.module('app')
         "GIFT CARDS"
     ],
       "BOXING": [
-        "- ALL BOXERS -",
+        "- ALL BOXING -",
         "MUHAMMAD ALI",
         "MIKE TYSON",
         "JULIO CESAR CHAVEZ",
@@ -61,6 +64,13 @@ angular.module('app')
         $state.go("accountLogin");
       }
     }
+    $scope.goToCart = function(){
+      if(localStorage.length >= 1){
+        $state.go("cart");
+      } else{
+        $state.go("accountLogin");
+      }
+    }
     $scope.getList = function(param){
       $scope.menuList = listObj[param];
     }
@@ -68,10 +78,11 @@ angular.module('app')
     var token;
     if(localStorage.length >= 1){
       productsSvc.cartLength().then(function(res){
-        $scope.cartLength = res;
+        var length = res;
+        $scope.cartLength = `(${length})`;
       })
     } else{
-      $scope.cartLength = 0;
+      $scope.cartLength = ""
     }
 
   })

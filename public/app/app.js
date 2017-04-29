@@ -49,5 +49,10 @@ angular.module('app', ['ui.router', 'ngAnimate'])
       templateUrl: './app/components/payment/payment.html',
       controller: 'paymentCtrl'
     })
+    .state("search", {
+      url: '/search?search',
+      templateUrl: "./app/components/search/search.html",
+      controller: "searchCtrl"
+    })
 
   });

@@ -1,9 +1,10 @@
 angular.module('app')
   .service('cartSvc', function($http) {
-    var token = JSON.parse(localStorage.getItem('tokenObj')).token;
+    // var token = JSON.parse(localStorage.getItem('tokenObj')).token;
 
 
     this.updateCartQty = function(qty, orderId){
+      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
       return $http({
         method: "PUT",
         url: '/api/orders',
@@ -20,8 +21,7 @@ angular.module('app')
     };
 
     this.deleteOrder = function(orderId){
-      console.log(orderId);
-
+      var token = JSON.parse(localStorage.getItem('tokenObj')).token;
       return $http({
         method: "DELETE",
         url: `/api/orders/${orderId}`,

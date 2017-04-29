@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('ProductDetailsController', function($scope, productsSvc, $stateParams){
+  .controller('ProductDetailsController', function($scope, productsSvc, $stateParams, $state){
     $scope.productCollection = $stateParams.id;
     $scope.productName = $stateParams.name;
     $scope.sizeUl = [{size: "Small"},{size: "Medium"},{size: "large"},{size: "X-Large"},{size: "XX-Large"},{size: "XXX-Large"}];
@@ -9,15 +9,18 @@ angular.module('app')
     });
 
     $scope.addToCart = function(product, pSize, qty){
-      var orderDetails = {
-        id: product,
-        size: pSize.size,
-        qty: qty
-      };
-      productsSvc.addToOrders(orderDetails).then(function(res){
-        
-      });
+      if(localStorage.length >= 1){
+        var orderDetails = {
+          id: product,
+          size: pSize.size,
+          qty: qty
+        };
+        productsSvc.addToOrders(orderDetails).then(function(res){
+          $state.reload();
+        });
+      } else {
+        $state.go("accountLogin");
+      }
+
     }
-
-
   })

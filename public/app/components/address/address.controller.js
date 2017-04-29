@@ -7,7 +7,6 @@ angular.module('app')
           $state.go('payment');
         }
       })
-
     }
     $scope.stateArr = [ "AK - Alaska",
                 "AL - Alabama",

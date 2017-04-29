@@ -43,6 +43,7 @@ app.post('/api/users/login', authCtrl.getUser);
 //post
 app.post('/api/products', postCtrl.postToOrder);
 app.post('/api/address', postCtrl.postAddress);
+app.post("/api/completeOrder", postCtrl.completeOrder);
 
 //put
 app.put('/api/orders', putCtrl.updateCartQty);
@@ -50,7 +51,7 @@ app.put('/api/orders', putCtrl.updateCartQty);
 app.delete('/api/orders/:id', deleteCtrl.deleteOrder);
 //get
 app.get('/api/users/email', getCtrl.getEmail);
-
+app.get("/api/users/address", getCtrl.getAddress);
 
 let port = config.port;
 app.listen(port, function () {

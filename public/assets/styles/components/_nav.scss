@@ -44,8 +44,8 @@ nav{
           height: 20px;
           width: 90%;
           border: solid 1px #444444;
-          // border-right: none;
           background: black;
+          color: white;
         }
         .fa-search{
           cursor: pointer;
@@ -73,6 +73,7 @@ nav{
           margin-left: 10px;
           margin-top: 1.2em;
         }
+
       }
       .main-account-account{
         float: right;

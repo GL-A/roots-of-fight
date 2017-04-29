@@ -22,17 +22,15 @@ const app = require('./../server')
 
       db.get.check_order([userId], function(err, orderRes) {
         if(err) {
-          console.log(err);
+          res.send(err);
         }
         if(orderRes.length === 0){
 
           db.post.products_to_order([userId, productId, size, qty], function(err, pToORes){
             if(err){
-              console.log('err', err)
               res.send(err);
             }
             else {
-              console.log('posted');
               res.send(pToORes);
             }
 
@@ -42,24 +40,19 @@ const app = require('./../server')
           var orderId = orderRes.order_id;
           db.get.update_order_check([userId, productId], function(err, updateOrderRes){
             if(err) {
-              console.log(err);
               res.send(err);
             }
             else {
               db.get.match_size([userId, productId, size], function(err, matchSizeRes) {
-                // console.log(matchSizeRes, 'match');
                 if(err){
-                  console.log(err);
                   res.send(err);
                 }
                 if(matchSizeRes.length === 0) {
                   db.post.products_to_order([userId, productId, size, qty], function(err, newPostRes) {
                     if(err){
-                      console.log(err);
                       res.send(err);
                     }
                     else {
-                      console.log('new item posted');
                       res.send(newPostRes);
                     }
                   })
@@ -72,10 +65,8 @@ const app = require('./../server')
                       res.send(err);
                     }
                     else{
-                      console.log(update_orderRes);
                       res.send(update_orderRes);
                     }
-                    // console.log('pls baby jesus');
                   })
                 }
               })
@@ -86,8 +77,6 @@ const app = require('./../server')
 
     },
     postAddress: function(req, res, next){
-      console.log(req.body.address.street);
-      console.log(req.headers.token);
       var token = req.headers.token;
 
       var street = req.body.address.street;
@@ -109,29 +98,54 @@ const app = require('./../server')
         return Promise.reject(err);
       }
       userId = decoded.id;
+       db.get.address([userId], function(err, addressRes){
+         if(err){
+           res.send(err);
+         } else {
+           if(addressRes.length === 0 ){
+             db.post.address([userId, street, city, state, country, zip, phone, first, last, company, apt], function(err, postRes){
+               if(err){
+                 res.send(err);
+               } else{
+                 res.send(true);
+               }
+             })
+           } else {
+             db.put.address([userId, street, city, state, country, zip, phone, first, last, company, apt], function(err, putAddress){
+               if(err){
+                 res.send(err);
+               } else {
+                 res.send(true);
+               }
+             })
+           }
+         }
+       })
 
-      db.post.address([userId, street, city, state, country, zip, phone, first, last, company, apt], function(err, postRes){
-        if(err){
+    },
+    completeOrder: function(req, res, next) {
+      var token = req.headers.token;
+      console.log(token);
+
+      var decoded;
+      var userId;
+      try {
+        decoded = jwt.verify(token, config.secret);
+      } catch(err) {
+        return Promise.reject(err);
+      }
+      userId = decoded.id;
+      console.log(userId);
+      var timestamp = new Date();
+      timestamp = timestamp.toLocaleDateString();
+      console.log(timestamp);
+      db.put.order([userId, timestamp], function(err, orderRes) {
+        if(err) {
           res.send(err);
-        } else{
-          res.send(true);
+        } else {
+          console.log(orderRes);
+          res.send(orderRes);
         }
       })
     }
-
-
-
-
   };
-
-
-  // var decoded;
-  //
-  //   try {
-  //     decoded = jwt.verify(token, secret);
-  //     console.log('verified?');
-  //   } catch(e) {
-  //     return Promise.reject();
-  //   }
-  //   decoded.user;
-  //   console.log(decoded);
