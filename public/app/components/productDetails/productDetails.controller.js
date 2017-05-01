@@ -6,7 +6,11 @@ angular.module('app')
 
     productsSvc.getProducts($scope.productName).then(function(res){
       $scope.product = res.productDetails;
+      $scope.mainImg = res.productDetails[0].jsonb_agg[0];
     });
+    $scope.test = function(img){
+      $scope.mainImg = img;
+    }
 
     $scope.addToCart = function(product, pSize, qty){
       if(localStorage.length >= 1){

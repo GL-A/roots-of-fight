@@ -24,6 +24,9 @@
   <div class="img-slider-controls">
     <i id="img-slider-control-1" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
   </div>
+  <div class="img-slider-controls-mobile">
+    <i id="img-slider-control-1-mobile" class="fa fa-chevron-left fa-3x" aria-hidden="true"></i>
+  </div>
 
     <div class="home-product-slider-ul-container">
       <ul class="home-product-slider-ul">
@@ -37,9 +40,24 @@
         </li>
       </ul>
     </div>
+    <div class="home-product-slider-ul-container-mobile">
+      <ul class="home-product-slider-ul-mobile">
+        <li ui-sref="productDetails({id: new.collections, name: new.name})" class="home-product-slider-li-mobile" ng-repeat="new in newReleases">
+          <img class="home-product-slider-li-img-mobile" src="{{new.jsonb_agg[0]}}" />
+          <div class="home-product-slider-li-div-mobile">
+            <h4>{{new.name}}</h4>
+            <p>ROOTS OF {{new.roots | uppercase}}</h5>
+            <p>{{new.price | currency}} USD</h5>
+          </div>
+        </li>
+      </ul>
+    </div>
 
     <div class="img-slider-controls">
       <i id="img-slider-control-2"  class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
+    </div>
+    <div class="img-slider-controls-mobile">
+      <i id="img-slider-control-2-mobile"  class="fa fa-chevron-right fa-3x" aria-hidden="true"></i>
     </div>
 
   </div>

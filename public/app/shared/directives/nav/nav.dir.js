@@ -75,6 +75,27 @@ angular.module('app').directive('navDir', function(){
 
       })
 
+      $("#searchlogo-mobile").on("click", function(){
+        $(".responsive-li").css("display", "none");
+        $(".responsive-li-search").css("display", "inline-block");
+      })
+      $("#account-x-mobile-search").on("click", function(){
+        $(".responsive-li").css("display", "inline-block");
+        $(".responsive-li-search").css("display", "none");
+
+      })
+      $(window).resize(function(){
+        if($(this).width() > 768){
+          $(".responsive-li").css("display", "none");
+          $(".responsive-li-search").css("display", "none");
+        }
+        if($(this).width() <= 767){
+          $(".responsive-li").css("display", "inline-block");
+          $(".responsive-li-search").css("display", "none");
+
+        }
+
+      })
     }
   }
 })

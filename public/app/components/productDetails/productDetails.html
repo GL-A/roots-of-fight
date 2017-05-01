@@ -36,7 +36,7 @@
         </div>
         <ul>
           <li ng-repeat="img in product[0].jsonb_agg">
-            <img src="{{img}}" />
+            <img ng-click="test(img)" src="{{img}}" />
           </li>
         </ul>
 
@@ -45,7 +45,7 @@
 
       <div class="details-product-img">
         <div class="details-product-img-inner">
-          <img src="{{product[0].jsonb_agg[0]}}" />
+          <img src="{{mainImg}}" />
         </div>
 
       </div>

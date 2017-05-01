@@ -60,6 +60,12 @@
         color: #e6e6e6;
       }
     }
+    .img-slider-controls-mobile{
+      display: none;
+    }
+    .home-product-slider-ul-container-mobile{
+      display: none;
+    }
     .home-product-slider-ul-container{
       width: 80%;
       margin: 0 auto;
@@ -96,27 +102,56 @@
         }
       }
     }
-  }
-  @media(max-width: 768px){
-    .home-product-slider-ul-container-wrapper{
+    @media(max-width: 768px){
+      .home-product-slider-ul-container{
+        display: none;
+      }
       .img-slider-controls{
-        width: 40%;
+        display: none;
+      }
+      .img-slider-controls-mobile{
+        display: block;
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
         i{
+          color: #e6e6e6;
         }
       }
-      .home-product-slider-ul-container{
-        width: 60%;
-        .home-product-slider-ul{
-          width: 600%;
-          .home-product-slider-li{
-            width: 300%;
-            .home-product-slider-li-img{
+      .home-product-slider-ul-container-mobile{
+        display: inline-block;
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        .home-product-slider-ul-mobile{
+          display: flex;
+          height: 80%;
+          flex-wrap: nowrap;
+          justify-content: center;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          width: 800%;
+          .home-product-slider-li-mobile{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0;
+            color: white;
+            transition: all ease-in-out 0.4s;
+            .home-product-slider-li-img-mobile{
+              width: 100%;
             }
-            .home-product-slider-li-div{
+            .home-product-slider-li-div-mobile{
+              text-align: center;
               h4{
+                color: #e6e6e6;
               }
               p{
-
+                font-size: 13px;
+                color: #e6e6e6;
               }
             }
           }

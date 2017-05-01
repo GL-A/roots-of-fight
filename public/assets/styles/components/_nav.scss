@@ -158,6 +158,15 @@ nav{
           cursor: pointer;
           display: none;
         }
+        .responsive-li-search{
+          display: none;
+          li:first-child{
+            width: 90%;
+          }
+          li:nth-child(2){
+            width: 10%;
+          }
+        }
 
       }
       .mobile-collection-li{
@@ -175,7 +184,10 @@ nav{
           .web-li{
             display: none;
           }
-
+          form{
+            margin: 0;
+            padding: 0;
+          }
           .responsive-li{
             display: flex;
             margin: 0;

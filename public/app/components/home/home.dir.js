@@ -3,7 +3,7 @@ angular.module('app')
     return {
       restrict: 'A',
       link: function(scope, elem, attr){
-        
+
         function checkWidth() {
           var windowsize = $(window).width();
           var transX = 0;
@@ -48,6 +48,26 @@ angular.module('app')
         checkWidth();
 
         $(window).resize(checkWidth);
+
+
+        var transXm = 0;
+        var checkerM = 0;
+        $("#img-slider-control-2-mobile").on("click", function(){
+          if(checkerM < 7){
+            checkerM ++;
+            transXm -= 100;
+          $(".home-product-slider-li-mobile").css("transform", `translateX(${transXm}%)`);
+        }
+        })
+        $("#img-slider-control-1-mobile").on("click", function(){
+          if(checkerM > 0){
+            checkerM --;
+            transXm += 100;
+          $(".home-product-slider-li-mobile").css("transform", `translateX(${transXm}%)`);
+        }
+        })
+
+
 
       }
     }

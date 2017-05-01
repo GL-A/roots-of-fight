@@ -25,10 +25,9 @@
       <!-- search -->
 
       <form ng-submit="goToSearch(searchCollection)">
-<!-- ui-sref="search({search: searchCollection})" -->
       <div  style="display: none;" class="main-account-search-input">
         <input ng-model="searchCollection" placeholder="Search store..."  />
-        <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+        <i ng-click="goToSearch(searchCollection)" class="fa fa-search fa-lg" aria-hidden="true"></i>
         <i id="nav-search-x" class="fa fa-times search-x" aria-hidden="true"></i>
       </div>
     </form>
@@ -104,6 +103,8 @@
         <li ng-click="getList('BLOG')" class="web-li">
           BLOG
         </li>
+
+
         <li class="responsive-li">
           <div id="nav-collections-ham-container">
             <div  id="nav-collections-ham-burger">
@@ -113,8 +114,8 @@
             </div>
           </div>
         </li>
-        <li class="responsive-li">
-          <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+        <li  class="responsive-li">
+          <i id="searchlogo-mobile" class="fa fa-search fa-lg" aria-hidden="true"></i>
         </li>
         <li id="accountlogo-mobile" ng-click="goToAccount()"class="responsive-li">
           <i class="fa fa-user fa-lg" aria-hidden="true"></i>
@@ -123,7 +124,15 @@
           <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
         </li>
 
-
+        <form  ng-submit="goToSearch(searchCollection)">
+        <li  class="responsive-li-search">
+          <input ng-model="searchCollection" />
+          <i ng-click="goToSearch(searchCollection)" class="fa fa-search fa-lg" aria-hidden="true"></i>
+        </li>
+      </form>
+        <li  class="responsive-li-search">
+          <i id="account-x-mobile-search" class="fa fa-times account-x" aria-hidden="true"></i>
+        </li>
       </ul>
 
     </div>
