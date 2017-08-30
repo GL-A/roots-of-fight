@@ -8,6 +8,11 @@ angular.module('app')
         }
       })
     }
+
+    {
+      console.log( res)
+      return res;
+    }
     $scope.stateArr = [ "AK - Alaska",
                 "AL - Alabama",
                 "AR - Arkansas",
