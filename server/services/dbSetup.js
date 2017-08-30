@@ -5,7 +5,7 @@ const app = require('./../server')
 
 module.exports = {
   run: function() {
-    console.log('Initializing database');
+    console.log('Initializing database', db.initialize.tables_initialize);
     db.initialize.tables_initialize(function(err, table) {
       if(err){
         return console.log('Some tables failed to create', err);

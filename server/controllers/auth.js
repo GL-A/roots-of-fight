@@ -62,7 +62,6 @@ module.exports = {
   },
   getUser: function(req, res, next) {
     db.get.get_user([req.body.email], function(err, results) {
-      // console.log(results);
       if(err){
         res.send(err);
       }
